@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div style="padding: 30px; background-color: #fffaf0;">
+  <h1 style="text-align: center; color: #e67e22;">🔥 Today's Special Offers</h1>
+  <div style="max-width: 800px; margin: auto; font-size: 18px;">
+    <ul class="mt-4">
+      <li><strong>🍦 Buy 1 Get 1 Free</strong> – On all single scoops this weekend only!</li>
+      <li><strong>🎉 Flat 20% Off</strong> – For first-time orders using code <code>WELCOME20</code></li>
+      <li><strong>🚚 Free Delivery</strong> – On orders above ₹499</li>
+    </ul>
+    <h3 style="text-align: center; color: red;">⏳ Hurry! Offer ends in:</h3>
+    <h2 id="countdown" style="text-align: center; font-size: 28px; color: #c0392b;"></h2>
+  </div>
+</div>
+{% endblock %}

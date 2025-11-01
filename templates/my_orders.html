@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}My Orders{% endblock %}
+{% block body %}
+<div class="container my-5">
+  <h2 class="mb-4">📦 My Orders</h2>
+  <div class="card shadow p-4">
+    <p>You haven't placed any orders yet.</p>
+    <a href="{% url 'Ordernow' %}" class="btn btn-primary mt-3">Order Now</a>
+  </div>
+</div>
+{% endblock %}

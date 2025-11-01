@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+{% block title %}Payment{% endblock %}
+{% block body %} 
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow p-4" style="width: 350px; border-radius: 15px;">
+      <h4 class="text-center mb-3">Complete Your Payment</h4>
+
+      <!-- GPay Image Centered -->
+      <div class="text-center mb-3">
+        <img src="/static/Gpaylogo.jpg" alt="GPay" class="img-fluid" style="height: 60px;">
+      </div>
+
+      <!-- Example of Payment Amount -->
+      <div class="text-center mb-4">
+        <p class="mb-0">Amount to Pay</p>
+        <h5 class="fw-bold">₹108</h5>
+      </div>
+
+      <!-- Pay Now Button -->
+      <div class="d-grid">
+          <form method="POST" action="{% url 'pay_now' %}">
+            {% csrf_token %}
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success btn-lg rounded-pill">Pay Now</button>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% comment %} <div class="card shadow d-flex flex-row align-items-center p-3" style="border-radius: 10px; background-color: #a1b6a1;">
+  <div class="me-3">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Google_Pay_Logo.svg"
+         alt="Google Pay" style="width: 100px; height: auto;" class="rounded" />
+  </div>
+
+  <div class="flex-grow-1 text-center">
+    <h5 class="mb-1">Google Pay</h5>
+  </div>
+
+  <div>
+    <form method="POST" action="{% url 'pay_now' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-success btn-sm">Pay Now</button>
+    </form>
+  </div>
+</div> {% endcomment %}

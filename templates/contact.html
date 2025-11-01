@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock title %}
+
+
+{% block body %}
+
+{% comment %} <div class="container-fluid px-0 my-2">
+<img src="/static/7.jpg"  width="1200" height="600" class="d-block w-100 px-0" alt="">
+</div> {% endcomment %}
+<div class="container mb-3 py-4 mt-5">
+  <h1 class= "text-center">Contact Us</h1>
+  <form method="post" action="/contact">
+    {% csrf_token %}
+     {% comment %} <div class="row"> {% endcomment %}
+    <div class="form-group mb-3">
+        <label for="name" >Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name">
+    </div>
+
+    <div class="form-group mb-3">  
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1"  name="email" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="form-group mb-3">
+      <label for="phone" >Phone No</label>
+      <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter your phone number"aria-describedby="phoneHelp">
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="desc" >Desc.</label>
+      <input type="desc" class="form-control" id="desc" name="desc" placeholder="Enter your text">
+    </div>
+
+    <select class="form-select mb-3" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% comment %} </div> {% endcomment %}
+
+{% endblock body %}
+

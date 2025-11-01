@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block title %}about{% endblock title %} 
+{% block body %}
+
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h1 class="display-4 fw-bold">About Dax Ice Creams</h1>
+    <p class="lead">Scoop into happiness – Serving smiles since day one!</p>
+  </div>
+
+  <div class="row align-items-center mb-5">
+    <div class="col-12 col-md-6">
+      <img
+        src="/static/Dax Ice Cream Image.png"
+        class="img-fluid rounded shadow"
+        alt="Ice Cream Factory"
+        style="max-height:400px"
+      />
+    </div>
+    <div class="col-12 col-md-6 mt-4 mt-md-0">
+      <h3 class="fw-semibold">Who We Are</h3>
+      <p>
+        Dax Ice Creams is a locally grown ice cream brand focused on
+        high-quality ingredients and creative flavors. With a deep passion for
+        dessert innovation, we serve our customers more than just a treat — we
+        serve unforgettable experiences.
+      </p>
+    </div>
+  </div>
+
+  <div class="row text-center mb-5">
+    <div class="col-12 col-md-4 mb-4 mb-md-0">
+      <div class="card shadow-sm h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold">Premium Quality</h5>
+          <p class="card-text flex-grow-1">
+            We use only the finest ingredients to ensure every bite is rich,
+            creamy, and delightful.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 mb-4 mb-md-0">
+      <div class="card shadow-sm h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold">Seasonal Flavors</h5>
+          <p class="card-text flex-grow-1">
+            We create limited-edition flavors using seasonal fruits and festive
+            inspirations.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold">Family Friendly</h5>
+          <p class="card-text flex-grow-1">
+            We offer fun options for kids, families, and large events — because
+            joy should be shared!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mb-5">
+    <a href="/contact" class="btn btn-outline-primary btn-lg">Contact Us</a>
+  </div>
+</div>
+{% endblock body %}

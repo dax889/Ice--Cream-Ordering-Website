@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock title %} | Dax Ice creams</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .content-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-content {
+      flex: 1;
+      margin-top: 70px; /* approx navbar height */
+    }
+  </style>
+
+  <body class="bg-danger bg-opacity-10">
+    <div class="content-wrapper">
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="/">Dax Ice Creams</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About Us</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="/services"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Services
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="/services">Ice cream</a>
+                  </li>
+                  <li><a class="dropdown-item" href="/services">Softy</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">Family Pack</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/feedbackform">Feedbackform</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'Ordernow' %}" class="btn btn-warning mx-2 mb-1 btn-animated">🛍️ Order Now</a>
+              </li>
+              <li><a class="nav-link" href="{% url 'offers' %}">Offers</a></li>
+            </ul>
+            
+            {% if user.is_authenticated %}
+                <div class="dropdown" style="display:inline-block; position:relative;">
+                  <button class="btn btn-warning dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    👤 {{ user.username }}
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="{% url 'my_orders' %}">📦 My Orders</a></li>
+                    <li><a class="dropdown-item" href="{% url 'wishlist' %}">💖 My Wishlist</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_settings' %}">⚙️ Account Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">🚪 Logout</a></li>
+                  </ul>
+                </div>
+              {% endif %}
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-warning mx-2 mb-1"
+              >Logout</a
+            >
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-danger mx-2">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-danger mx-2">Sign Up</a>
+            {% endif %} {% comment %}
+            
+            <form class="d-flex mb-2 mb-lg-0" role="search">
+              <input
+                class="form-control me-2 w-100 w-lg-auto"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+            {% endcomment %}
+                <li class="navbar-nav dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="/"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Flavours
+                  </a>
+                 <ul class="dropdown-menu px-3 py-2">
+                      <li class="d-flex justify-content-between align-items-center">
+                        <a class="dropdown-item" href="{% url 'category' 'Vanilla' %}">Vanilla</a>
+                        {% comment %} <span>Vanilla</span> {% endcomment %}
+                        <img src="/static/Chocolate.jpg" alt="Vanilla" width="70" height="50">
+                      </li><hr>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <a class="dropdown-item" href="{% url 'category' 'Chocolate' %}">Chocolate</a>
+                        <img src="/static/Vanila.jpg" alt="Chocolate" width="70" height="50">
+                      </li><hr>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <a class="dropdown-item" href="{% url 'category' 'Strawberry' %}">Strawberry</a>
+                        <img src="/static/Strawberry.jpg" alt="Strawberry" width="70" height="50">
+                      </li><hr>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <a class="dropdown-item" href="{% url 'category' 'Mango' %}">Mango</a>
+                        <img src="/static/Mango.jpg" alt="Mango" width="70" height="50">
+                      </li><hr>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <a class="dropdown-item" href="{% url 'category' 'Butterscotch' %}">Butterscotch</a>
+                        <img src="/static/Butterscotch.jpg" alt="Butterscotch" width="70" height="50">
+                      </li><hr>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <a class="dropdown-item" href="{% url 'category' 'Pista' %}">Pista</a>
+                        <img src="/static/Pista.jpg" alt="Pista" width="70" height="50">
+                      </li>
+                    </ul>
+                </li>
+                {% comment %} <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Flavours
+                    </a>
+                    <ul class="dropdown-menu px-3 py-2">
+                      <li class="d-flex justify-content-between align-items-center">
+                        <span>Vanilla</span>
+                        <img src="/static/Chocolate.jpg" alt="Vanilla" width="30" height="30">
+                      </li>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <span>Chocolate</span>
+                        <img src="/static/Vanila.jpg" alt="Chocolate" width="30" height="30">
+                      </li>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <span>Strawberry</span>
+                        <img src="/static/Strawberry.jpg" alt="Strawberry" width="30" height="30">
+                      </li>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <span>Mango</span>
+                        <img src="/static/Mango.jpg" alt="Mango" width="30" height="30">
+                      </li>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <span>Butterscotch</span>
+                        <img src="/static/Butterscotch.jpg" alt="Butterscotch" width="30" height="30">
+                      </li>
+                      <li class="d-flex justify-content-between align-items-center">
+                        <span>Pista</span>
+                        <img src="/static/Pista.jpg" alt="Pista" width="30" height="30">
+                      </li>
+                    </ul>
+                  </li> {% endcomment %}
+
+          </div>
+        </div>
+      </nav>
+
+      {% if messages %} {% for message in messages %}
+      <div
+        class="alert alert-{{ message.tags }} alert-dismissible fade show mt-5"
+        role="alert"
+      >
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %} {% endif %}
+
+      <main class="main-content">{% block body %}{% endblock body %}</main>
+      {% include 'footer.html' %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/main.js"></script>  
+  </body>
+</html>
